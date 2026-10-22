@@ -1,23 +1,100 @@
 aid: arb-corporation
+
 name: ARB Corporation
-description: 'ARB Corporation is a company surfaced via the API Evangelist harvest backlog (source: australia-apidays-2026)
-  and added to the network as a stub for full-pipeline profiling.'
+
+description: ARB Corporation (ARB 4x4 Accessories) is an Australian designer, manufacturer and retailer of off-road 4x4 vehicle
+  accessories, operating at arb.com.au. Its range covers 4x4 protection (bull bars, side steps, rear bars, under-vehicle protection),
+  Old Man Emu suspension kits and GVM upgrades, ute canopies, trays and lids, and roof racks, sold through ARB stores and
+  dealers, with an investors section on its site. No public developer API documentation was found on its own site during this
+  pass.
+
 url: https://raw.githubusercontent.com/api-evangelist/arb-corporation/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:australia-apidays-2026
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-21 (modular-v1; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-10-21'
+
 modified: '2026-10-21'
+
 tags:
 - Company
-apis: []
+- Automotive
+- 4x4 Accessories
+- Off-Road
+- Manufacturing
+- Retail
+- Australia
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
+image: https://www.arb.com.au/content/dam/arb/permanent-site-assets/arb/logos/ARB%20Logo.svg
+
 common:
+- type: LLMsTxt
+  url: llms/arb-corporation-llms.txt
+- type: MCPServer
+  url: mcp/arb-corporation-mcp.yml
+- type: WellKnown
+  url: well-known/arb-corporation-well-known.yml
+- type: Hosts
+  url: hosts/arb-corporation-hosts.yml
+- type: Vendors
+  url: vendors/arb-corporation-vendors.yml
+- type: SignUp
+  url: https://www.arb.com.au/Vehicles/Nissan/patrol/Y63/register
+- type: DomainSecurity
+  url: security/arb-corporation-domain-security.yml
 - type: Website
-  url: https://arb.com.au/
+  url: https://www.arb.com.au/
+- type: Support
+  url: https://www.arb.com.au/Contact-Us
+- type: Investors
+  url: https://www.arb.com.au/investors
+- type: TermsOfService
+  url: https://www.arb.com.au/investors/Policies/arb-website-terms-and-conditions
+- type: PrivacyPolicy
+  url: https://www.arb.com.au/investors/Policies/privacy-policy
+- type: LinkedIn
+  url: https://au.linkedin.com/company/arb-corporation-pty-ltd
+- type: YouTube
+  url: https://www.youtube.com/@ARB4x4Accessories
+
+apis: []
+
+x-coverage:
+  state: covered
+  reason: identity-verified
+  detail: Website verified (arb.com.au 301 -> www.arb.com.au 200, title "ARB 4x4 Accessories Australia"); no developer portal
+    or API docs published on owned hosts; /api on 4x4outlet and store subdomains returned 404.
+  evidence:
+  - url: https://www.arb.com.au/
+    status: 200
+  - url: https://www.arb.com.au/Contact-Us
+    status: 200
+  - url: https://www.arb.com.au/investors
+    status: 200
+  - url: https://www.arb.com.au/investors/Policies/arb-website-terms-and-conditions
+    status: 200
+  - url: https://www.arb.com.au/investors/Policies/privacy-policy
+    status: 200
+  - url: https://4x4outlet.arb.com.au/api
+    status: 404
+  - url: https://store.arb.com.au/api
+    status: 404
+x-enrichment:
+  date: '2026-10-21'
+  status: enriched
+  artifacts_added: 16
+  pass: modular-v1
+  engine: identity=anthropic,contract=anthropic,surfaces=anthropic,docs=anthropic,regulatory=anthropic

@@ -1,0 +1,107 @@
+generated: '2026-10-21'
+method: searched
+probe: true
+source: https://www.arb.com.au/investors/Policies/privacy-policy
+jurisdiction_note: >-
+  ARB Corporation Limited (ACN 006 708 756) is an Australian manufacturer and retailer of 4x4 parts and
+  accessories. Its Privacy Policy (last updated August 2026) states it is governed by the Privacy Act 1988 (Cth)
+  and names the OAIC as the escalation body. Neither page reviewed is about an API; ARB publishes no developer
+  program, so this posture describes the company's consumer/customer data handling only.
+pages_read:
+- url: https://www.arb.com.au/investors/Policies/privacy-policy
+  http_status: 200
+  fetched: '2026-10-21'
+- url: https://www.arb.com.au/investors/Policies/terms-and-conditions
+  http_status: 200
+  fetched: '2026-10-21'
+signals:
+  data_subject_request:
+    url: https://www.arb.com.au/investors/Policies/privacy-policy
+    section: Access And Correction
+    channel: privacy@arb.com.au
+    rights_named: [access, correction]
+    stated_sla: 'complaints: acknowledged within a week; response generally within 30 days'
+    escalation: Office of the Australian Information Commissioner (www.oaic.gov.au)
+    evidence:
+    - source: https://www.arb.com.au/investors/Policies/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: >-
+        You may request access to any Personal Information We hold about You at any time by contacting Us (see
+        details below). Where We hold information that You are entitled to access, We will take reasonable steps to
+        provide You with suitable means of accessing it (for example, by mailing or emailing it to You).
+    - source: https://www.arb.com.au/investors/Policies/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: >-
+        If you believe that Personal Information We hold about You is incorrect, incomplete or inaccurate, then You
+        may request Us to amend it.
+    - source: https://www.arb.com.au/investors/Policies/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: >-
+        In most cases, We expect that complaints will be investigated and a response generally provided within 30
+        days of receipt of the complaint.
+    note: >-
+      Access and correction rights under the Australian Privacy Act, via the Privacy Officer at privacy@arb.com.au,
+      with a possible administration fee if agreed beforehand. Deletion and portability are not named. The 30-day
+      figure applies to complaints, not to access requests.
+  subprocessors:
+    url: https://www.arb.com.au/investors/Policies/privacy-policy
+    section: Disclosure Of Personal Information
+    named: [Microsoft Clarity, Microsoft Advertising, Facebook, Twitter, Google]
+    evidence:
+    - source: https://www.arb.com.au/investors/Policies/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: >-
+        Service providers: including, without limitation, technology service providers of applications and
+        systems, cloud computing facilities, development and technical support, data processing, storing, hosting,
+        research and analysis, mailing houses, couriers, payment processors, data entry service providers, network
+        administrators, debt collectors, third party product repairers, and professional advisors.
+    - source: https://www.arb.com.au/investors/Policies/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: >-
+        We partner with Microsoft Clarity and Microsoft Advertising to capture how you use and interact with Our
+        website through behavioural metrics, heatmaps, and session replay to improve and market Our
+        products/services.
+    note: >-
+      Disclosure by category, plus a few named partners (Microsoft Clarity/Advertising; Facebook, Twitter, Google as
+      business partners). There is no published, maintained subprocessor list.
+  data_residency:
+    url: https://www.arb.com.au/investors/Policies/privacy-policy
+    section: Collection Notice
+    evidence:
+    - source: https://www.arb.com.au/investors/Policies/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: >-
+        We may disclose Your personal information to recipients that are located outside of Australia.
+    note: >-
+      A cross-border disclosure statement, not a localisation commitment: data may leave Australia, and the
+      destination countries are not named.
+  data_retention:
+    url: https://www.arb.com.au/investors/Policies/privacy-policy
+    section: Security
+    evidence:
+    - source: https://www.arb.com.au/investors/Policies/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: >-
+        We retain Personal Information for as long as is necessary for the purpose for which it was collected or in
+        some circumstances for longer periods where extended retention is required by law or regulation, and as
+        necessary in order to defend Our legal rights.
+    - source: https://www.arb.com.au/investors/Policies/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: >-
+        ARB will take active steps to protect personal data from misuse, loss, or unauthorized access, and destroy
+        or de-identify data when no longer needed.
+    note: >-
+      Purpose-bound retention with destruction or de-identification when no longer needed. No fixed retention
+      periods are stated.
+not_addressed: >-
+  The two pages say nothing on incident/breach notification, Global Privacy Control, AI transparency, accessibility
+  conformance, age assurance, SBOM, transparency reports, exit assistance or support lifetime. The terms only state
+  that products are delivered within Australia, which is a sales restriction, not a data-residency commitment.

@@ -1,0 +1,137 @@
+generated: '2026-10-21'
+method: probed
+status: published
+source: https://4x4outlet.arb.com.au/api/ucp/mcp
+llms_source: https://4x4outlet.arb.com.au/llms.txt
+name: ARB 4x4 Outlet UCP MCP server
+description: Universal Commerce Protocol (UCP) MCP server for ARB Corporation's ARB 4x4 OUTLET online store (4x4outlet.arb.com.au),
+  a Shopify storefront. It is the Shopify platform's standard storefront UCP server (serverInfo universal-commerce 0.1.0),
+  not a server built by ARB itself. It is advertised by the store's own llms.txt, agents.md, robots.txt and /.well-known/ucp
+  profile.
+server:
+  name: universal-commerce
+  version: 0.1.0
+  protocolVersion: '2025-06-18'
+  transport: streamable-http (JSON response)
+  platform: Shopify
+discovery:
+- url: https://4x4outlet.arb.com.au/llms.txt
+  status: 200
+- url: https://4x4outlet.arb.com.au/agents.md
+  status: 200
+- url: https://4x4outlet.arb.com.au/robots.txt
+  status: 200
+  note: 'advertises "UCP/MCP endpoint: https://4x4outlet.arb.com.au/api/ucp/mcp"'
+- url: https://4x4outlet.arb.com.au/.well-known/ucp
+  status: 200
+  note: UCP profile version 2026-08-25; lists the MCP service endpoint on the store's myshopify host https://d2fb05-36.myshopify.com/api/ucp/mcp
+    with schema https://ucp.dev/2026-08-25/services/shopping/mcp.openrpc.json
+- url: https://4x4outlet.arb.com.au/api/mcp
+  status: 404
+  note: not the endpoint; checked with GET only
+probe:
+  initialize:
+    status: 200
+  tools_list:
+    status: 200
+    tool_count: 13
+  auth_required_for_tools_list: false
+  note: Only initialize and tools/list were called, against the endpoint the provider advertises. No tool was invoked.
+auth:
+  type: none
+  note: initialize and tools/list answered without credentials. The llms.txt says agents must identify themselves with Web
+    Bot Auth for server-to-server traffic, and orders may only be placed with buyer authorization.
+tool_count: 13
+tools:
+- name: get_checkout
+  category: checkout
+  description: Returns details about the checkout, including line items, totals, and any applicable discounts or taxes.
+  input_properties:
+  - meta
+  - id
+- name: create_checkout
+  category: checkout
+  description: Creates a checkout. Returns checkout details, including line items, totals, and any applicable discounts or
+    taxes.
+  input_properties:
+  - meta
+  - checkout
+- name: update_checkout
+  category: checkout
+  description: Updates a checkout. Returns checkout details, including line items, totals, and any applicable discounts or
+    taxes.
+  input_properties:
+  - meta
+  - checkout
+  - id
+- name: complete_checkout
+  category: checkout
+  description: Completes a checkout and returns the checkout result. Returns details about the completed checkout, including
+    order ID, Thank You Page URL, or any errors encountered.
+  input_properties:
+  - meta
+  - checkout
+  - id
+- name: cancel_checkout
+  category: checkout
+  description: Cancels a checkout.
+  input_properties:
+  - meta
+  - id
+- name: get_cart
+  category: cart
+  description: Get the cart contents
+  input_properties:
+  - meta
+  - id
+- name: create_cart
+  category: cart
+  description: Creates a new cart
+  input_properties:
+  - meta
+  - cart
+- name: update_cart
+  category: cart
+  description: Perform updates to a cart.
+  input_properties:
+  - meta
+  - cart
+  - id
+- name: cancel_cart
+  category: cart
+  description: Cancels a cart.
+  input_properties:
+  - meta
+  - id
+- name: get_order
+  category: orders
+  description: Get the details of an order
+  input_properties:
+  - meta
+  - id
+- name: search_catalog
+  category: catalog
+  description: Search for products from the online store, hosted on Shopify.
+  input_properties:
+  - meta
+  - catalog
+- name: lookup_catalog
+  category: catalog
+  description: Look up multiple products or variants by identifier.
+  input_properties:
+  - meta
+  - catalog
+- name: get_product
+  category: catalog
+  description: Retrieve complete product detail by identifier. Returns a singular product
+  input_properties:
+  - meta
+  - catalog
+deployment:
+  mode: remote
+  endpoint: https://4x4outlet.arb.com.au/api/ucp/mcp
+  auth: none
+  verified: probed
+notes: The scope is the 4x4 Outlet store, not the main arb.com.au site, which publishes no API or llms.txt (https://www.arb.com.au/llms.txt
+  returned 404). There is no OpenAPI in this repo, so there is no tool crosswalk, overlay or skill. The provider points agents
+  to the Shop skill at https://shop.app/SKILL.md, which is published by Shopify for every Shopify store, not by ARB.
